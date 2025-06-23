@@ -1,1 +1,61 @@
-<p>rain works!</p>
+<div *ngIf="showWarning" class="rave-warning">
+  <span class="rave-warning-text">⚠️ WARNING: EPILEPSY</span>
+  <audio #letsRockAudio src="assets/images/letsrock.mp3"></audio>
+</div>
+<div *ngIf="showIntro" class="rave-intro">
+  <span class="rave-intro-text">let's rock</span>
+</div>
+<div class="rave-bg" [class.rave-bg-active]="showCopyright"></div>
+<div *ngIf="showClick" class="rave-click-group">
+  <div class="rave-click">
+    <span class="rave-letter">c</span><span class="rave-letter">l</span><span class="rave-letter">i</span><span class="rave-letter">c</span><span class="rave-letter">k</span>
+    <span class="rave-letter"> </span>
+    <span class="rave-letter">f</span><span class="rave-letter">o</span><span class="rave-letter">r</span>
+    <span class="rave-letter"> </span>
+    <span class="rave-letter">r</span><span class="rave-letter">a</span><span class="rave-letter">v</span><span class="rave-letter">e</span>
+  </div>
+  <div *ngIf="showVolume" class="rave-volume">
+    <span class="rave-letter">v</span><span class="rave-letter">o</span><span class="rave-letter">l</span><span class="rave-letter">u</span><span class="rave-letter">m</span><span class="rave-letter">e</span>
+    <span class="rave-letter"> </span>
+    <span class="rave-letter">u</span><span class="rave-letter">p</span>
+  </div>
+</div>
+<div *ngIf="showCopyright" class="rave-copyright rave-blink">
+  <span class="rave-letter">l</span><span class="rave-letter">e</span><span class="rave-letter">t</span><span class="rave-letter">'</span><span class="rave-letter">s</span>
+  <span class="rave-letter"> </span>
+  <span class="rave-letter">r</span><span class="rave-letter">o</span><span class="rave-letter">c</span><span class="rave-letter">k</span>
+</div>
+<img *ngIf="showElphelt" src="assets/images/ELPHELT.gif" alt="elphelt" class="rave-elphelt">
+<div class="rain-container">
+  <img src="assets/images/ABA_SILLY.png" alt="rain" class="rain" #rainImg [class.rain-rotate]="showCopyright" [class.rain-blink]="showCopyright">
+  <img src="assets/images/dizzy.gif" alt="dvd" class="dvd-bounce" #dvdImg>
+  <!-- Intégration simple et légère de smug et ball -->
+  <img *ngIf="showCopyright" src="assets/images/smug.jpg" alt="smug" class="rave-smug-static rave-smug-rave"
+    #smugImg
+    [ngStyle]="smugRavePosition"
+    [class.rave-smug-rave-active]="smugRaveActive"
+  >
+  <img *ngIf="showCopyright" src="assets/images/smug.jpg" alt="smug2" class="rave-smug-static rave-smug2-rave"
+    #smug2Img
+    [ngStyle]="smug2RavePosition"
+    [class.rave-smug2-rave-active]="smug2RaveActive"
+  >
+  <img *ngIf="showCopyright" src="assets/images/ball.png" alt="ball" class="rave-ball-static rave-ball-rave"
+    #ballImg
+    [ngStyle]="ballRavePosition"
+    [class.rave-ball-rave-active]="ballRaveActive"
+  >
+  <img *ngIf="showCopyright" src="assets/images/ball.png" alt="ball2" class="rave-ball-static rave-ball2-rave"
+    #ball2Img
+    [ngStyle]="ball2RavePosition"
+    [class.rave-ball2-rave-active]="ball2RaveActive"
+  >
+</div>
+<!-- Barres musicales oscillantes en bas de la page -->
+<div class="rave-bars-bottom">
+  <span *ngFor="let bar of musicBars; let i = index"
+        class="rave-bar-alt"
+        [ngClass]="{'boost1': bar.boost === 1, 'boost2': bar.boost === 2}"
+        [style.background]="bar.color"></span>
+</div>
+<audio src="assets/images/PRG.mp3" autoplay loop></audio>
