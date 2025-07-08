@@ -1,24 +1,33 @@
 <div class="menu-container">
   <div class="menu-header">
-    <h1 class="menu-title">rain</h1>
-    <div class="menu-desc">Bienvenue dans l’univers des mondes. Choisissez un monde pour commencer !</div>
+    <h1 class="menu-title">Rain</h1>
+    <div class="menu-desc">A site where I make more or less useless stuff.<br>Weird, useless, rarely fun – always pointless.</div>
   </div>
   <div class="bubbles-wrapper">
     <div class="bubble-col">
-      <div class="bubble" (click)="goToWorld(1)"><span>Monde 1</span></div>
-      <div class="bubble" (click)="goToWorld(2)"><span>Monde 2</span></div>
-      <div class="bubble" (click)="goToWorld(3)"><span>Monde 3</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(1)"><span>Random Shit 1</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(2)"><span>2</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(3)"><span>3</span></div>
     </div>
     <div class="bubble-col">
-      <div class="bubble" (click)="goToWorld(4)"><span>Monde 4</span></div>
-      <div class="bubble" (click)="goToWorld(5)"><span>Monde 5</span></div>
-      <div class="bubble" (click)="goToWorld(6)"><span>Monde 6</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(4)"><span>4</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(5)"><span>5</span></div>
+      <div class="bubble comic-bubble" (click)="goToWorld(6)"><span>6</span></div>
     </div>
   </div>
   <div class="popup" *ngIf="showPopup">
     <div class="popup-content">
       <span>{{ popupText }}</span>
-      <button (click)="closePopup()">Fermer</button>
+      <button (click)="closePopup()">Close</button>
     </div>
+  </div>
+  <div class="loading-overlay" *ngIf="showLoading">
+    <div class="spinner">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div class="fake-loading-text">(fake loading btw)</div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-  html, body {
+html, body {
     margin: 0; padding: 0;
     height: 100%; width: 100%;
     overflow: hidden;
@@ -117,3 +117,13 @@
 .flag.nb2          { animation-delay: 37.5s; }
 .flag.genderqueer2 { animation-delay: 40s; }
 .flag.agender2     { animation-delay: 42.5s; }
+
+.flags-bg.rave-active .flag {
+  animation: raveFlagBlink 0.22s steps(2, end) infinite !important;
+  opacity: 1 !important;
+}
+
+@keyframes raveFlagBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}

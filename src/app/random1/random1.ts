@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-random1',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './random1.html',
   styleUrl: './random1.scss'
 })
-export class Random1 {}
+export class Random1 {
+  @Input() rave = false;
+}
