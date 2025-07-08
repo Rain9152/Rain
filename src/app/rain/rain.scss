@@ -369,3 +369,96 @@ body{
   height: 80px;
   padding: 0;
 }
+
+.rain-flags-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  pointer-events: none;
+  /* Optionnel: animation d’apparition */
+  animation: fadeIn 1.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// --- Responsive design for mobile ---
+@media (max-width: 700px) {
+  .rain {
+    width: 90vw;
+    min-width: 0;
+    max-width: 98vw;
+  }
+  .rain-container {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+  }
+  .rave-copyright {
+    font-size: 6vw;
+    top: 3vw;
+    right: 2vw;
+  }
+  .rave-click, .rave-volume {
+    font-size: 4vw;
+    bottom: 3vw;
+    left: 3vw;
+  }
+  .rave-click-group {
+    top: 3vw;
+    left: 3vw;
+    gap: 6vw;
+  }
+  .rave-elphelt {
+    width: 60vw;
+    min-width: 120px;
+    right: 2vw;
+    bottom: 12vw;
+  }
+  .rave-ball-static {
+    width: 18vw !important;
+    height: 18vw !important;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  .rave-ball2-rave {
+    width: 12vw !important;
+    height: 12vw !important;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  .rave-smug-static {
+    width: 13vw !important;
+    height: 13vw !important;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  .rave-smug2-rave {
+    width: 8vw !important;
+    height: 8vw !important;
+    min-width: 20px;
+    min-height: 20px;
+  }
+  .rave-bars-bottom {
+    height: 12vw;
+    min-height: 36px;
+  }
+  .rave-bar-alt {
+    min-width: 0;
+    border-radius: 2vw 2vw 4vw 4vw;
+  }
+  .rave-warning-text {
+    font-size: 8vw;
+    padding: 4vw 6vw;
+  }
+  .rave-intro-text {
+    font-size: 6vw;
+    padding: 4vw 6vw;
+  }
+}
+// --- End responsive ---

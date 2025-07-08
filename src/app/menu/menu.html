@@ -1,0 +1,24 @@
+<div class="menu-container">
+  <div class="menu-header">
+    <h1 class="menu-title">rain</h1>
+    <div class="menu-desc">Bienvenue dans l’univers des mondes. Choisissez un monde pour commencer !</div>
+  </div>
+  <div class="bubbles-wrapper">
+    <div class="bubble-col">
+      <div class="bubble" (click)="goToWorld(1)"><span>Monde 1</span></div>
+      <div class="bubble" (click)="goToWorld(2)"><span>Monde 2</span></div>
+      <div class="bubble" (click)="goToWorld(3)"><span>Monde 3</span></div>
+    </div>
+    <div class="bubble-col">
+      <div class="bubble" (click)="goToWorld(4)"><span>Monde 4</span></div>
+      <div class="bubble" (click)="goToWorld(5)"><span>Monde 5</span></div>
+      <div class="bubble" (click)="goToWorld(6)"><span>Monde 6</span></div>
+    </div>
+  </div>
+  <div class="popup" *ngIf="showPopup">
+    <div class="popup-content">
+      <span>{{ popupText }}</span>
+      <button (click)="closePopup()">Fermer</button>
+    </div>
+  </div>
+</div>

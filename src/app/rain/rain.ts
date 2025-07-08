@@ -1,9 +1,10 @@
 import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, HostListener, OnChanges, SimpleChanges } from '@angular/core';
 import { NgIf, NgStyle, NgFor, NgClass } from '@angular/common';
+import { Random1 } from '../random1/random1';
 
 @Component({
   selector: 'app-rain',
-  imports: [NgIf, NgStyle, NgFor, NgClass],
+  imports: [NgIf, NgStyle, NgFor, NgClass, Random1],
   templateUrl: './rain.html',
   styleUrl: './rain.scss'
 })
@@ -13,6 +14,7 @@ export class Rain implements AfterViewInit, OnChanges {
   @ViewChild('ball2Img', { static: false }) ball2Img!: ElementRef<HTMLImageElement>;
   @ViewChild('smugImg', { static: false }) smugImg!: ElementRef<HTMLImageElement>;
   @ViewChild('smug2Img', { static: false }) smug2Img!: ElementRef<HTMLImageElement>;
+  @ViewChild('mainAudio', { static: false }) mainAudio!: ElementRef<HTMLAudioElement>;
 
   showCopyright = false;
   showClick = true;
@@ -75,9 +77,25 @@ export class Rain implements AfterViewInit, OnChanges {
 
   constructor(private renderer: Renderer2) {}
 
+  // Empêche le retour arrière sur la page rain
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event: any) {
+    history.pushState(null, '', location.href);
+  }
+
+  // Affiche un message de confirmation à la fermeture de l'onglet
+  @HostListener('window:beforeunload', ['$event'])
+  onBeforeUnload(event: any) {
+    event.preventDefault();
+    event.returnValue = 'Êtes-vous sûr de vouloir quitter ce monde ?';
+    return 'Êtes-vous sûr de vouloir quitter ce monde ?';
+  }
+
   ngAfterViewInit() {
     setTimeout(() => this.startDVDBounce(), 0);
     this.enableAudioOnInteraction();
+    // Empêche le retour arrière navigateur
+    history.pushState(null, '', location.href);
   }
 
   ngOnDestroy() {
@@ -90,7 +108,7 @@ export class Rain implements AfterViewInit, OnChanges {
 
   // Permet de lancer l'audio après une interaction utilisateur
   private enableAudioOnInteraction() {
-    const audio = document.querySelector('audio');
+    const audio = this.mainAudio?.nativeElement;
     if (!audio) return;
     audio.volume = 1.0;
     const startAt = 23; // temps de départ en secondes (modifie cette valeur selon le besoin)
@@ -109,7 +127,7 @@ export class Rain implements AfterViewInit, OnChanges {
           this.showElphelt = true;
           this.startBallRaveEffect();
           this.startSmugRaveEffect();
-          this.startMusicBars(175); // démarre les barres à 175bpm après le warning
+          this.startMusicBars(175);
         }, 600); // durée de l'intro en ms (2x plus court)
       }, 1600); // durée du warning en ms
       window.removeEventListener('click', playAudio);

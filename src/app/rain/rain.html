@@ -27,6 +27,7 @@
 </div>
 <img *ngIf="showElphelt" src="assets/images/ELPHELT.gif" alt="elphelt" class="rave-elphelt">
 <div class="rain-container">
+  <app-random1 class="rain-flags-bg"></app-random1>
   <img src="assets/images/ABA_SILLY.png" alt="rain" class="rain" #rainImg [class.rain-rotate]="showCopyright" [class.rain-blink]="showCopyright">
   <img src="assets/images/dizzy.gif" alt="dvd" class="dvd-bounce" #dvdImg>
   <!-- Intégration simple et légère de smug et ball -->
@@ -58,4 +59,4 @@
         [ngClass]="{'boost1': bar.boost === 1, 'boost2': bar.boost === 2}"
         [style.background]="bar.color"></span>
 </div>
-<audio src="assets/images/PRG.mp3" autoplay loop></audio>
+<audio #mainAudio src="assets/images/PRG.mp3" loop></audio>
